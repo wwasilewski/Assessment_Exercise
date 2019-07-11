@@ -12,11 +12,15 @@ import java.util.List;
 @Service
 public interface BookService {
 
-    public List<Book> findAllBooks();
+    // method to get all books
+    public List<Book> getAllBooks();
 
-    public Book findBookById(int bookId);
+    // method to get book by specific id
+    public Book findBookById(long bookId);
 
-    public void saveBook(Book book);
+    // method to add book
+    public void addBook(Book book);
 
-    public void deleteBookById(int bookId);
+    // method to delete book by specific id
+    public void deleteBookById(long bookId);
 }
