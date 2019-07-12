@@ -12,6 +12,7 @@ import java.util.List;
  * @date Created on 11.07.2019
  */
 @RestController
+@RequestMapping("api")
 public class BookController {
 
     private BookService bookService;
@@ -23,7 +24,7 @@ public class BookController {
     }
 
     // expose /books and get list of all books - GET
-    @GetMapping("/getAllBooks")
+    @GetMapping("/books")
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
@@ -42,7 +43,7 @@ public class BookController {
     }
 
     // add mapping for adding book - POST
-    @PostMapping("/addBook")
+    @PostMapping("/books")
     public Book addBook(@RequestBody Book book) {
 
         // set id to 0 in case they pass id in JSON
@@ -53,7 +54,7 @@ public class BookController {
     }
 
     // add mapping for deleting book - DELETE
-    @DeleteMapping("/deleteBook/{bookId}")
+    @DeleteMapping("/books/{bookId}")
     public String deleteBookById(@PathVariable long bookId) {
         Book tempBook = bookService.findBookById(bookId);
 
