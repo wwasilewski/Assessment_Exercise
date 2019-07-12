@@ -12,7 +12,7 @@ import java.util.List;
  * @date Created on 11.07.2019
  */
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class BookController {
 
     private BookService bookService;
