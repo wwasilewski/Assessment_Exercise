@@ -12,20 +12,19 @@
 
 <h2><p>ADD A BOOK: </p></h2>
 
-<!--<form role="form"  th:action="@{/add}" th:object="${books}"  th:method="post">-->
-<!--    <div>-->
-<!--        <label for="author"> Author </label>-->
-<!--        <input th:field="*{author}" id="author" type="text">-->
+<form th:action="@{/book/add}" th:object="${book}" th:method="post">
 
-<!--        <label for="title"> Title </label>-->
-<!--        <input th:field="*{title}" id="title" type="text">-->
+    <label for="author"> Author </label>
+    <input th:field="*{author}" id="author" type="text">
 
-<!--        <label for="title"> ISBN </label>-->
-<!--        <input th:field="*{isbn}" id="isbn" type="text">-->
-<!--    </div>-->
-<!--    <button type="submit"> Add Book </button>-->
+    <label for="title"> Title </label>
+    <input th:field="*{title}" id="title" type="text">
 
-<!--</form>-->
+    <label for="isbn"> ISBN </label>
+    <input th:field="*{isbn}" id="isbn" type="text">
+
+    <button type="submit"> Add</button>
+</form>
 
 </body>
 </html>

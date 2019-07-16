@@ -3,7 +3,9 @@ package com.assessment.ww.Assessment_Exercise.controller;
 import com.assessment.ww.Assessment_Exercise.model.Book;
 import com.assessment.ww.Assessment_Exercise.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -12,7 +14,6 @@ import java.util.List;
  * @date Created on 11.07.2019
  */
 @RestController
-@RequestMapping("/api")
 public class BookController {
 
     private BookService bookService;
@@ -24,13 +25,13 @@ public class BookController {
     }
 
     // expose /books and get list of all books - GET
-    @GetMapping("/books")
+    @GetMapping("/api/books")
     public List<Book> getAllBooks() {
         return bookService.getAllBooks();
     }
 
     // add mapping for getting specific book - GET
-    @GetMapping("/books/{bookId}")
+    @GetMapping("/api/books/{bookId}")
     public Book getBookById(@PathVariable long bookId) {
 
         Book book = bookService.findBookById(bookId);
@@ -43,18 +44,18 @@ public class BookController {
     }
 
     // add mapping for adding book - POST
-    @PostMapping("/books")
+    @PostMapping("/api/books")
     public Book addBook(@RequestBody Book book) {
 
         // set id to 0 in case they pass id in JSON
         // to force a save of new item instead od update
-        book.setId(0);
+        book.setId(0l);
         bookService.addBook(book);
         return book;
     }
 
     // add mapping for deleting book - DELETE
-    @DeleteMapping("/books/{bookId}")
+    @DeleteMapping("/api/books/{bookId}")
     public String deleteBookById(@PathVariable long bookId) {
         Book tempBook = bookService.findBookById(bookId);
 
@@ -65,5 +66,23 @@ public class BookController {
         bookService.deleteBookById(bookId);
 
         return "Deleted book with id: " + bookId;
+    }
+
+    @GetMapping("/book/add")
+    public ModelAndView addGet() {
+        ModelAndView m = new ModelAndView();
+        m.addObject("book", new Book());
+        m.setViewName("addBook");
+        return m;
+    }
+
+    @PostMapping("/book/add")
+    public ModelAndView addBook(Book book, BindingResult br) {
+        ModelAndView m = new ModelAndView();
+        bookService.addBook(book);
+
+        m.setViewName("addBook");
+        m.addObject("book", new Book());
+        return m;
     }
 }
