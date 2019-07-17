@@ -46,7 +46,11 @@
     </tbody>
 </table>
 
-<a href="/book/add">Click here to add a book </a>
+<a href="/book/add" th:href="@{/book/add}">Click here to add a book </a>
+
+<footer th:fragment="copy">
+    &copy; 2019 Wojciech Wasilewski
+</footer>
 
 </body>
 </html>

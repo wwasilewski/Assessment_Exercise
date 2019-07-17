@@ -28,5 +28,9 @@
 
 <a href="/" th:href="@{/}">Back</a>
 
+<!-- replace div tag with footer tag with copyright defined in index.html -->
+<!-- th:include is possible here but will not change tag so will be div instead of footer here -->
+<div th:replace="index :: copy"></div>
+
 </body>
 </html>
