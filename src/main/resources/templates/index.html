@@ -15,6 +15,8 @@
 <table>
     <thead>
     <tr>
+        <!--        th Number added for numbering purpose-->
+        <th> Number</th>
         <th> Author</th>
         <th> Title</th>
         <th> ISBN</th>
@@ -27,7 +29,9 @@
     </tr>
 
     <!--    the same as below but better/shorter code -->
-    <tr th:each="book : ${books}" th:object="${book}">
+    <tr th:each="book, stat : ${books}" th:object="${book}">
+        <!--        added for numbering purpose, variable stat is needed for iteration -->
+        <td th:text="${stat.count}">1</td>
         <td th:text="*{author}"> Author</td>
         <td th:text="*{title}"> Title</td>
         <td th:text="*{isbn}"> ISBN</td>
