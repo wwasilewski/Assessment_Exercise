@@ -6,9 +6,8 @@
     <title>Starting Page</title>
 
     <!--    adding stylesheet file in css directory-->
-    <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}" href="/css/main.css"/>
 </head>
-
 <body>
 
 <h2><p>LIST OF BOOKS: </p></h2>
@@ -27,11 +26,19 @@
         <td colspan="3"> No records</td>
     </tr>
 
-    <tr th:each="book : ${books}">
-        <td th:text="${book.author}"> Author</td>
-        <td th:text="${book.title}"> Title</td>
-        <td th:text="${book.isbn}"> ISBN</td>
+    <!--    the same as below but better/shorter code -->
+    <tr th:each="book : ${books}" th:object="${book}">
+        <td th:text="*{author}"> Author</td>
+        <td th:text="*{title}"> Title</td>
+        <td th:text="*{isbn}"> ISBN</td>
     </tr>
+
+    <!--    <tr th:each="book : ${books}">-->
+    <!--        <td th:text="${book.author}"> Author</td>-->
+    <!--        <td th:text="${book.title}"> Title</td>-->
+    <!--        <td th:text="${book.isbn}"> ISBN</td>-->
+    <!--    </tr>-->
+
     </tbody>
 </table>
 
