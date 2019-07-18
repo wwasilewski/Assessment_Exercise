@@ -78,10 +78,9 @@ public class BookController {
 
     @PostMapping("/book/add")
     public ModelAndView addBook(Book book, BindingResult br) {
-        ModelAndView m = new ModelAndView();
+        ModelAndView m = new ModelAndView("redirect:/index");
         bookService.addBook(book);
 
-        m.setViewName("addBook");
         m.addObject("book", new Book());
         return m;
     }
