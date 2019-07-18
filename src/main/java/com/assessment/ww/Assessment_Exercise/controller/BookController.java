@@ -68,6 +68,13 @@ public class BookController {
         return "Deleted book with id: " + bookId;
     }
 
+    // add mapping for deleting all books - DELETE
+    @DeleteMapping("api/books")
+    public String deleteAllBooks() {
+        bookService.deleteAllBooks();
+        return "All records deleted";
+    }
+
     @GetMapping("/book/add")
     public ModelAndView addGet() {
         ModelAndView m = new ModelAndView();

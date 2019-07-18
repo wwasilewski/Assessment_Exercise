@@ -52,4 +52,9 @@ public class BookServiceImpl implements BookService {
     public void deleteBookById(long bookId) {
         bookRepository.deleteById(bookId);
     }
+
+    @Override
+    public void deleteAllBooks() {
+        bookRepository.deleteAll();
+    }
 }

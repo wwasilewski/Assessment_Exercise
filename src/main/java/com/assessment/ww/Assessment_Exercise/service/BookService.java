@@ -21,4 +21,7 @@ public interface BookService {
 
     // method to delete book by specific id
     public void deleteBookById(long bookId);
+
+    // method to delete all books
+    public void deleteAllBooks();
 }
