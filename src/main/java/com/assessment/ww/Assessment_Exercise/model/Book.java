@@ -9,7 +9,6 @@ import java.util.Set;
  * @date Created on 11.07.2019
  */
 @Entity
-@Table(name = "book")
 public class Book {
 
     // auto-generate id
@@ -21,6 +20,8 @@ public class Book {
     private String isbn;
 
     @ManyToMany
+    @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
+            inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
     // no args constructor is required by hibernate (because of reflection)
