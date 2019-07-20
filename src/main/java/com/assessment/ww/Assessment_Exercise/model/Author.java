@@ -1,9 +1,6 @@
 package com.assessment.ww.Assessment_Exercise.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +17,7 @@ public class Author {
     private String forename;
     private String surname;
 
+    @ManyToMany
     private Set<Book> books = new HashSet<>();
 
     public Author() {

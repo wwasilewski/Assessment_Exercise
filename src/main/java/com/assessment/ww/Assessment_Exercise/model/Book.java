@@ -1,6 +1,8 @@
 package com.assessment.ww.Assessment_Exercise.model;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Wojciech Wasilewski
@@ -13,27 +15,28 @@ public class Book {
     // auto-generate id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private Long id;
 
-    @Column(name = "author")
-    private String author;
-
-    @Column(name = "title")
     private String title;
-
-    @Column(name = "isbn")
     private String isbn;
+
+    @ManyToMany
+    private Set<Author> authors = new HashSet<>();
 
     // no args constructor is required by hibernate (because of reflection)
     public Book() {
     }
 
     // no need to add id parameter here - it will be generated automatically
-    public Book(String author, String title, String isbn) {
-        this.author = author;
+    public Book(String title, String isbn) {
         this.title = title;
         this.isbn = isbn;
+    }
+
+    public Book(String title, String isbn, Set<Author> authors) {
+        this.title = title;
+        this.isbn = isbn;
+        this.authors = authors;
     }
 
     public Long getId() {
@@ -42,14 +45,6 @@ public class Book {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
     }
 
     public String getTitle() {
@@ -68,13 +63,21 @@ public class Book {
         this.isbn = isbn;
     }
 
+    public Set<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<Author> authors) {
+        this.authors = authors;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "id=" + id +
-                ", author='" + author + '\'' +
                 ", title='" + title + '\'' +
                 ", isbn='" + isbn + '\'' +
+                ", authors=" + authors +
                 '}';
     }
 }
