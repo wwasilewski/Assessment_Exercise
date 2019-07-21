@@ -1,5 +1,7 @@
 package com.assessment.ww.Assessment_Exercise.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -20,6 +22,7 @@ public class Book {
     private String isbn;
 
     @ManyToMany
+    @JsonIgnore // removed wierd loop with data
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
