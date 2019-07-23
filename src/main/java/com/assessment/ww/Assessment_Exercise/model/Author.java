@@ -1,5 +1,7 @@
 package com.assessment.ww.Assessment_Exercise.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +20,7 @@ public class Author {
     private String surname;
 
     @ManyToMany(mappedBy = "authors")
+    @JsonIgnoreProperties("authors")
     private Set<Book> books = new HashSet<>();
 
     public Author() {
