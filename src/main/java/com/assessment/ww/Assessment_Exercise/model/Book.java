@@ -21,7 +21,7 @@ public class Book {
     private String title;
     private String isbn;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL) // to save author's data when adding book to db
     @JsonIgnoreProperties("books")
     @JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id"))

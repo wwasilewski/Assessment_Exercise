@@ -19,7 +19,7 @@ public class Author {
     private String forename;
     private String surname;
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "authors", cascade = CascadeType.ALL) // look -> @ManyToMany in Book
     @JsonIgnoreProperties("authors")
     private Set<Book> books = new HashSet<>();
 
