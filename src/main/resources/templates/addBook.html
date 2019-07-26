@@ -14,8 +14,12 @@
 
 <form th:action="@{/book/add}" th:object="${book}" th:method="post">
 
-    <label for="author"> Author </label>
-    <input th:field="*{author}" id="author" type="text">
+
+    <label for="author_name"> Author_Name </label>
+    <input th:field="*{author}" id="author_name" type="text">
+
+    <label for="author_surname"> Author_Surn </label>
+    <input th:field="*{author}" id="author_surname" type="text">
 
     <label for="title"> Title </label>
     <input th:field="*{title}" id="title" type="text">
@@ -23,7 +27,11 @@
     <label for="isbn"> ISBN </label>
     <input th:field="*{isbn}" id="isbn" type="text">
 
-    <button type="submit"> Add</button>
+    <p>
+        <button type="submit"> Add</button>
+    </p>
+
+
 </form>
 
 <a href="/" th:href="@{/}">Back</a>

@@ -3,7 +3,9 @@ package com.assessment.ww.Assessment_Exercise.controller;
 import com.assessment.ww.Assessment_Exercise.model.Book;
 import com.assessment.ww.Assessment_Exercise.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -73,20 +75,20 @@ public class BookController {
         return "All records deleted";
     }
 
-//    @GetMapping("/book/add")
-//    public ModelAndView addGet() {
-//        ModelAndView m = new ModelAndView();
-//        m.addObject("book", new Book());
-//        m.setViewName("addBook");
-//        return m;
-//    }
-//
-//    @PostMapping("/book/add")
-//    public ModelAndView addBook(Book book, BindingResult br) {
-//        ModelAndView m = new ModelAndView("redirect:/index");
-//        bookService.addBook(book);
-//
-//        m.addObject("book", new Book());
-//        return m;
-//    }
+    @GetMapping("/book/add")
+    public ModelAndView addGet() {
+        ModelAndView m = new ModelAndView();
+        m.addObject("book", new Book());
+        m.setViewName("addBook");
+        return m;
+    }
+
+    @PostMapping("/book/add")
+    public ModelAndView addBook(Book book, BindingResult br) {
+        ModelAndView m = new ModelAndView("redirect:/index");
+        bookService.addBook(book);
+
+        m.addObject("book", new Book());
+        return m;
+    }
 }
